@@ -34,7 +34,7 @@ def create_people_table():
     # Define an SQL query that creates a table named 'people'.
     # Each row in this table will hold information about a specific person.
     
-    create_ppl_tbl_query = """
+    people_table_query = """
     
        CREATE TABLE IF NOT EXISTS people
        (
@@ -52,7 +52,7 @@ def create_people_table():
     """
     # Execute the SQL query to create the 'people' table.
     # Database operations like this are called transactions.
-    cur.execute(create_ppl_tbl_query)    
+    cur.execute(people_table_query)    
     
     # Commit (save) pending transactions to the database.
     # Transactions must be committed to be persistent.
@@ -77,7 +77,7 @@ def populate_people_table():
     
     # Create a faker object for English Canadian locale
     fake = Faker("en_CA")
-    add_person_query = """
+    add_ppl_query = """
           INSERT INTO people
           (
               name,
@@ -101,8 +101,8 @@ def populate_people_table():
                       fake.address(),
                       fake.city(),
                       fake.province(),
-                      'Enjoys making funny sounds when talking.',
-                      fake.random_int(min=1, max=100),
+                    #  'Enjoys making funny sounds when talking.',
+                      fake.random_int(min=18, max=99),
                       datetime.now(),
                       datetime.now()
             )
@@ -112,7 +112,7 @@ def populate_people_table():
  
 # Define a tuple of data for the new person to insert into people table
 # Data values must be in the same order as specified in query
-#return 
+    return 
 
 if __name__ == '__main__':
    main()
